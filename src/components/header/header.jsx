@@ -6,7 +6,9 @@ import { auth } from '../../firebase/firebase.js';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-export const Header = ({ currentUser }) => (
+import { connect } from 'react-redux';
+
+const Header = ({ currentUser }) => (
     <div className='header' >
         <Link to='/'>
             <Logo className='logo'/>
@@ -23,3 +25,9 @@ export const Header = ({ currentUser }) => (
         </div>
     </div>
 )
+
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);
