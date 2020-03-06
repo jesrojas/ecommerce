@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.js';
 import CartIcon from '../cart-icon/cart-icon.jsx';
-import { CartDropdown } from '../cart-dropdown/cart-dropdown.jsx';
+import CartDropdown from '../cart-dropdown/cart-dropdown.jsx';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
