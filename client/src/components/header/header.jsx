@@ -11,19 +11,19 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartHidden } from '../../redux/cart/cart.selectors.js';
 import { selectCurrentUser } from '../../redux/user/user.selectors.js';
 import { signOutStart } from '../../redux/user/user.actions.js';
+import { changeCartHiddenIfTrueAction } from '../../redux/cart/cart.actions.js';
 
-const Header = ({ currentUser, hidden, signOutStart }) => (
+const Header = ({ currentUser, hidden, signOutStart, changeHiddenIfTrue }) => (
   <HeaderContainer>
-    <LogoContainer to="/">
+    <LogoContainer to="/" onClick={changeHiddenIfTrue}>
       <Logo className="logo" />
     </LogoContainer>
     <OptionsContainer>
-      <OptionLink to="/shop">SHOP</OptionLink>
-      <OptionLink to="/shop">CONTACT</OptionLink>
+      <OptionLink to="/shop" onClick={changeHiddenIfTrue}>SHOP</OptionLink>
       {currentUser ? (
         <OptionLink as='div' onClick={signOutStart}>SIGN OUT</OptionLink>
       ) : (
-        <OptionLink to="/signin">SIGN IN</OptionLink>
+          <OptionLink to="/signin" onClick={changeHiddenIfTrue}>SIGN IN</OptionLink>
       )}
       <CartIcon />
     </OptionsContainer>
@@ -37,7 +37,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutStart: () => dispatch(signOutStart())
+  signOutStart: () => dispatch(signOutStart()),
+  changeHiddenIfTrue: () => dispatch(changeCartHiddenIfTrueAction())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

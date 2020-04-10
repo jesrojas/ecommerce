@@ -1,7 +1,7 @@
 import React from 'react';
 import './collections-overview.scss';
 
-import { CollectionPreview } from '../collection-preview/collection-preview.jsx';
+import CollectionPreview from '../collection-preview/collection-preview.jsx';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';

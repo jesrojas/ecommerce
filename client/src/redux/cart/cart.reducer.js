@@ -13,6 +13,11 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 hidden: !state.hidden
             }
+        case CartActionTypes.CHANGE_CART_HIDDEN_IF_TRUE:
+            return {
+                ...state,
+                hidden: state.hidden ? state.hidden : !state.hidden
+            }
         case CartActionTypes.ADD_ITEM:
             return {
                 ...state,
@@ -29,9 +34,14 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 cartItems: removeItemFromCart(state.cartItems, action.payload)
             }
         case CartActionTypes.CLEAR_CART:
-            return{
+            return {
                 ...state,
                 cartItems: []
+            }
+        case CartActionTypes.SET_CART_FROM_FIREBASE:
+            return {
+                ...state,
+                cartItems: action.payload
             }
         default: 
             return state;

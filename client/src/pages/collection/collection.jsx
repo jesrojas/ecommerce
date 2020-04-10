@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import CollectionItem from '../../components/collection-item/collection-item.jsx';
 
@@ -9,6 +9,11 @@ import { selectCollection } from  '../../redux/shop/shop.selectors.js';
 
 const CollectionPage = ({ collections }) => {
     const { title, items } = collections;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+    
     return(
         <div className='collection-page'>
             <h2 className='title'>{ title }</h2>
